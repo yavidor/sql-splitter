@@ -5,18 +5,20 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#define ONE_GB (1ULL * 1024 * 1024 * 1024); // 1GiB
+
 int main(int argc, char *argv[]) {
     char *fileName = argv[1];
     long int pos = 0;
     int counter = 0;
     int pFile = open(fileName, O_RDONLY);
-    size_t len = 1 * 1024 * 1024 * 1024; // 1GiB
+    size_t len = ONE_GB;
+    char *buffer = (char *)malloc(len); // Maximum size of a file
     mkdir("output",
           // 0755
           S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
     while (1) {
         counter++;
-        char *buffer = (char *)malloc(len); // Maximum size of a file
 
         int bytesRead = pread(pFile, buffer, len, pos);
 
@@ -57,9 +59,9 @@ int main(int argc, char *argv[]) {
         }
         printf("Written chunk #%d\n", counter);
 
-        close(output);
-        free(buffer);
+        memset(buffer, '0', len);
         free(outPutFileName);
+        close(output);
     }
     return 0;
 }
