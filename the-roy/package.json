@@ -1,0 +1,32 @@
+{
+  "name": "royshit-refactored",
+  "version": "1.0.0",
+  "description": "A collection of scripts for when you hate your disk space.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "generate:text": "node dist/cli/generate-text.js",
+    "generate:sql": "node dist/cli/generate-sql.js",
+    "split": "node dist/cli/split.js",
+    "reconstruct": "node dist/cli/reconstruct.js",
+    "compare": "node dist/cli/compare.js",
+    "translate": "node dist/cli/translation.js",
+    "dev:generate:text": "tsx src/cli/generate-text.ts",
+    "dev:generate:sql": "tsx src/cli/generate-sql.ts",
+    "dev:split": "tsx src/cli/split.ts",
+    "dev:reconstruct": "tsx src/cli/reconstruct.ts",
+    "dev:compare": "tsx src/cli/compare.ts"
+  },
+  "author": "Roy (the disk space hater)",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^14.0.0",
+    "p-queue": "^8.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}
