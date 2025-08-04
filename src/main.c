@@ -8,6 +8,8 @@
 
 #define ONE_GB (1ULL * 1024 * 1024 * 1024); // 1GiB
 
+// TODO:
+// Add flag parsing, maybe with getopt(s) and maybe with argparse
 int main(int argc, char *argv[]) {
     char *fileName = argv[1];
     long int pos = 0;
